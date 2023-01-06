@@ -1,1 +1,1 @@
-<a href="https://jakubhalik.github.io/"><h1>Kalkulačka zde</h1></a>
+<h1><a href="https://jakubhalik.github.io/">Kalkulačka zde</a></h1>
