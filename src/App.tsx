@@ -30,6 +30,13 @@ const Calculator = () => {
           return;
         }
       }
+      const openingBracket = inputArray.filter(char => char === '(').length;
+      const closingBracket = inputArray.filter(char => char === ')').length;
+      if (value === ')') {
+        if (openingBracket <= closingBracket) {
+          return;
+        }
+      }
       let lastChar = input[input.length - 1];
       if ((value === '(' && lastChar === ')') || 
           (value === ')' && lastChar === '(') || (value === ')' && lastChar === '.') || (value === ')' && lastChar === '+') || (value === ')' && lastChar === '-') || (value === ')' && lastChar === '/') || (value === ')' && lastChar === '*') ||
