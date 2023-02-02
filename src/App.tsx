@@ -30,7 +30,17 @@ const Calculator = () => {
           return;
         }
       }
+      const openingBracket = inputArray.filter(char => char === '(').length;
+      const closingBracket = inputArray.filter(char => char === ')').length;
+      if (value === ')') {
+        if (openingBracket <= closingBracket) {
+          return;
+        }
+      }
       let lastChar = input[input.length - 1];
+      if (value === '(' && lastChar === '0' || value === '(' && lastChar === '1' || value === '(' && lastChar === '2' || value === '(' && lastChar === '3' || value === '(' && lastChar === '4' || value === '(' && lastChar === '5' || value === '(' && lastChar === '6' || value === '(' && lastChar === '7' || value === '(' && lastChar === '8' || value === '(' && lastChar === '9') {
+        return;
+      }
       if ((value === '(' && lastChar === ')') || 
           (value === ')' && lastChar === '(') || (value === ')' && lastChar === '.') || (value === ')' && lastChar === '+') || (value === ')' && lastChar === '-') || (value === ')' && lastChar === '/') || (value === ')' && lastChar === '*') ||
           (value === '.' && lastChar === '(') || (value === '.' && lastChar === ')') || (value === '.' && lastChar === '.') || (value === '.' && lastChar === '+') || (value === '.' && lastChar === '-') || (value === '.' && lastChar === '/') || (value === '.' && lastChar === '*') ||
@@ -78,7 +88,7 @@ const Calculator = () => {
     
     if (e.currentTarget.name === '=') {
       let equation = input;
-      let lastChar = equation[equation.length - 1]; 
+      let lastChar = equation[equation.length - 1];
       // Replace all instances of x and ÷ with * and / respectively. This can be done using regex and the 'g' tag which will replace all instances of the matched character/substring
       equation = equation.replace(/x/g, '*').replace(/÷/g, '/');
       // Checking the last character of the equation. If it's an operator or a decimal, remove it
@@ -118,6 +128,13 @@ const Calculator = () => {
       return;
     }
     const inputArray = input.split('');
+    const openingBracket = inputArray.filter(char => char === '(').length;
+      const closingBracket = inputArray.filter(char => char === ')').length;
+      if (e.currentTarget.name === ')') {
+        if (openingBracket <= closingBracket) {
+          return;
+        }
+      }
       const periodCount = inputArray.filter(char => char === '.').length;
       const operatorCount = inputArray.filter(char => char === '+' || char === '-' || char === '*' || char === '/').length;
       if (e.currentTarget.name === '.' && input.includes('.')) {
@@ -132,7 +149,8 @@ const Calculator = () => {
         (e.currentTarget.name === ')' && input.length === 0)) {
       return;
     }
-    if ((e.currentTarget.name === '(' && lastChar === ')') || 
+    if ((e.currentTarget.name === '(' && lastChar === ')') ||
+          (e.currentTarget.name === '(' && lastChar === '0') || (e.currentTarget.name === '(' && lastChar === '1') || (e.currentTarget.name === '(' && lastChar === '2') || (e.currentTarget.name === '(' && lastChar === '3') || (e.currentTarget.name === '(' && lastChar === '4') || (e.currentTarget.name === '(' && lastChar === '5') || (e.currentTarget.name === '(' && lastChar === '6') || (e.currentTarget.name === '(' && lastChar === '7') || (e.currentTarget.name === '(' && lastChar === '8') || (e.currentTarget.name === '(' && lastChar === '9') ||
           (e.currentTarget.name === ')' && lastChar === '(') || (e.currentTarget.name === ')' && lastChar === '.') || (e.currentTarget.name === ')' && lastChar === '+') || (e.currentTarget.name === ')' && lastChar === '-') || (e.currentTarget.name === ')' && lastChar === '/') || (e.currentTarget.name === ')' && lastChar === '*') ||
           (e.currentTarget.name === '.' && lastChar === '(') || (e.currentTarget.name === '.' && lastChar === ')') || (e.currentTarget.name === '.' && lastChar === '.') || (e.currentTarget.name === '.' && lastChar === '+') || (e.currentTarget.name === '.' && lastChar === '-') || (e.currentTarget.name === '.' && lastChar === '/') || (e.currentTarget.name === '.' && lastChar === '*') ||
           (e.currentTarget.name === '+' && lastChar === '(') || (e.currentTarget.name === '+' && lastChar === '+') || (e.currentTarget.name === '+' && lastChar === '.') || (e.currentTarget.name === '+' && lastChar === '-') || (e.currentTarget.name === '+' && lastChar === '/') || (e.currentTarget.name === '+' && lastChar === '*') || 
